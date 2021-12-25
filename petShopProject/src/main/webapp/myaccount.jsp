@@ -34,7 +34,8 @@
             if(String.valueOf(session.getAttribute("nameUser")).equals("null")){
             	out.print("you are not connected");
             } else{
-            out.print("connected: "+nameUser);} %></span></div>
+            out.print("connected: "+nameUser);
+            } %></span></div>
             
         
         	<div class="feat_prod_box_details">

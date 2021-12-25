@@ -12,7 +12,8 @@ public interface UtilisateurDao {
     void ajouterCommande(Commande commande);
     List<Products> listerProducts();
     Products afficherProduit(int id);
-    List<Commande> afficherCommande();
+    List<Commande> afficherCommande(String mail);
+    String afficherEmail(String user);
 
 
 }

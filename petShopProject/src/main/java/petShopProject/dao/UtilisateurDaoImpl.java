@@ -165,7 +165,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	  }
 	    @Override
-		public List<Commande> afficherCommande()  {
+		public List<Commande> afficherCommande(String mail)  {
 	    	  List<Commande> commandes = new ArrayList<Commande>();
 		        Connection connexion = null;
 		        Statement statement = null;
@@ -174,11 +174,11 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		        try {
 		            connexion = daoFactory.getConnection();
 		            statement = connexion.createStatement();
-		            resultat = statement.executeQuery("SELECT id, email,item_pic,item_name,price, quantite FROM commande;");
+		            resultat = statement.executeQuery("SELECT id,item_pic,item_name,price, quantite FROM commande where email='"+mail+"';");
 
 		            while (resultat.next()) {
 		            	int id = resultat.getInt("id");
-		                String email = resultat.getString("email");
+		                
 		                String item_pic = resultat.getString("item_pic");
 		                String item_name = resultat.getString("item_name");
 		                float price = resultat.getFloat("price");
@@ -187,7 +187,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 		                Commande commande = new Commande();
 		                commande.setId(id);
-		                commande.setEmail(email);
+		               
 		                commande.setItem_pic(item_pic);
 		                commande.setItem_name(item_name);
 		                commande.setPrice(price);
@@ -203,6 +203,31 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	
 
 	  }
+	    @Override
+	 		public String afficherEmail(String user)  {
+	    	String email = "" ;
+	 		        Connection connexion = null;
+	 		        Statement statement = null;
+	 		        ResultSet resultat = null;
+
+	 		        try {
+	 		            connexion = daoFactory.getConnection();
+	 		            statement = connexion.createStatement();
+	 		            resultat = statement.executeQuery("SELECT email  FROM users where username='"+user+"';");
+
+	 		            while (resultat.next()) {
+	 		            	
+	 		                
+	 		                 email = resultat.getString("email");
+	 		            
+	 		            }
+	 		        } catch (SQLException e) {
+	 		            e.printStackTrace();
+	 		        }
+	 		        return email;
+	 	
+
+	 	  }
 	
 
 }

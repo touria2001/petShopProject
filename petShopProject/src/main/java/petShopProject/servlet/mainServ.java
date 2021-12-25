@@ -20,10 +20,11 @@ import petShopProject.login.Login;
 public class mainServ extends HttpServlet {
 	 private static final long serialVersionUID = 1L;
 	   private UtilisateurDao utilisateurDao;
-
+	   HttpSession session;
 	    public void init() throws ServletException {
 	        DaoFactory daoFactory = DaoFactory.getInstance();
 	        this.utilisateurDao = daoFactory.getUtilisateurDao();
+	        
 	    }
 
 
@@ -32,33 +33,18 @@ public class mainServ extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	/*	if(String.valueOf(request.getParameter("page")).equals("home")) {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
-
-		} else if(String.valueOf(request.getParameter("page")).equals("cart")) {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/cart.jsp").forward(request, response);
-			
-		}else if(String.valueOf(request.getParameter("page")).equals("category")) {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/category.jsp").forward(request, response);
-			
-		}else if(String.valueOf(request.getParameter("page")).equals("contact")) {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/contact.jsp").forward(request, response);
-			
-		}else if(String.valueOf(request.getParameter("page")).equals("details")) {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/details.jsp").forward(request, response);
-			
-		}else if(String.valueOf(request.getParameter("page")).equals("myaccount")) {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/myaccount.jsp").forward(request, response);
-			
-		}else if(String.valueOf(request.getParameter("page")).equals("register")) {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
-			
-		}else if(String.valueOf(request.getParameter("page")).equals("specials")) {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/specials.jsp").forward(request, response);
-			
-		}else {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/about.jsp").forward(request, response);
-		}*/
+		
+		if(!String.valueOf(request.getParameter("cart")).equals("null")) {
+		    session.getAttribute("nameUser");
+	        if(!String.valueOf(session.getAttribute("nameUser")).equals("null")){            	
+           
+             
+	        request.setAttribute("commandes", utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(session.getAttribute("nameUser")))));
+	        
+	    
+	        this.getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);
+	        }
+		}
 		
 	if(	!String.valueOf(request.getParameter("productId")).equals("null"))
 	{
@@ -91,8 +77,10 @@ public class mainServ extends HttpServlet {
 	        Login login = new Login();
 	        login.verifierIdentifiants(request);
 	        request.setAttribute("resultat", login.getResultat());
+	        
 	        if(login.getResultat().equals("you are connected") ) {
-	        	HttpSession session = request.getSession();
+	        	 session = request.getSession();
+	        	
 	        	session.setAttribute("nameUser",request.getParameter("user"));
 	        	this.getServletContext().getRequestDispatcher("/myaccount.jsp").forward(request, response);
 	        }
@@ -105,11 +93,17 @@ public class mainServ extends HttpServlet {
 	        commande.setPrice(100);
 	        commande.setQuantite(1);
 	        utilisateurDao.ajouterCommande(commande);
-	        request.setAttribute("commandes", utilisateurDao.afficherCommande());
+	        session.getAttribute("nameUser");
+	        if(!String.valueOf(session.getAttribute("nameUser")).equals("null")){
+            	
+           
+             
+	        request.setAttribute("commandes", utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(session.getAttribute("nameUser")))));
 	        
 	     //   if(!commande.equals(null)) {
-	        this.getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);//}
-
+	        this.getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);}//}
+        //-------------------------------------------------------------------
+	        
 	        //------------------------------------------------------------------------------------------
 	        this.getServletContext().getRequestDispatcher("/myaccount.jsp").forward(request, response);
 	}
