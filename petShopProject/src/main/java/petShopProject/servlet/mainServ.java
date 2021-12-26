@@ -33,6 +33,11 @@ public class mainServ extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//pour right content
+		request.setAttribute("nbrItems",String.valueOf(utilisateurDao.nombreItems(utilisateurDao.afficherEmail(String.valueOf(session.getAttribute("nameUser"))))));
+        this.getServletContext().getRequestDispatcher("/details.jsp").forward(request, response);
+
+		
 		
 		if(!String.valueOf(request.getParameter("cart")).equals("null")) {
 		    session.getAttribute("nameUser");

@@ -228,6 +228,28 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	 	
 
 	 	  }
+	    
+	    @Override
+	    public int nombreItems(String mail) {
+	       int i =0;
+	        Connection connexion = null;
+	        Statement statement = null;
+	        ResultSet resultat = null;
+
+	        try {
+	            connexion = daoFactory.getConnection();
+	            statement = connexion.createStatement();
+	            resultat = statement.executeQuery("SELECT COUNT(*)  AS total FROM commande WHERE email='"+mail+"';");
+
+	            while (resultat.next()) {
+	            	i = resultat.getInt("total");
+	            
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return i;
+	    }
 	
 
 }
