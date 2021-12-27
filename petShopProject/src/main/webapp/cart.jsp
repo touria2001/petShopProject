@@ -52,7 +52,7 @@
                 </tr>
                <%
                List<Commande> commandes = new ArrayList<Commande>();            
-               commandes = (List) request.getAttribute("commandes");            
+               commandes = (List) application.getAttribute("commandes");            
               if(String.valueOf(commandes).equals("null")) {
                	
                }else {

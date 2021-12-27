@@ -71,12 +71,12 @@
                     
                   </form>     
                     <p style="color:red" ><% 
-                    String resultat = String.valueOf(request.getAttribute("resultat"));
-                   if(String.valueOf(request.getAttribute("resultat")).equals("null")){
+                    String resultat = String.valueOf(application.getAttribute("resultat"));
+                   if(String.valueOf(application.getAttribute("resultat")).equals("null")){
                     	out.print("");
                     }
                     else{               
-                       out.print(request.getAttribute("resultat"));
+                       out.print(application.getAttribute("resultat"));
                     } %></p>
                 </div>  
             

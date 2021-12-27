@@ -49,7 +49,7 @@
         
         
          	<%  List<Products> products = new ArrayList<Products>();            
-            products = (List) request.getAttribute("products");            
+            products = (List) application.getAttribute("products");            
            if(String.valueOf(products).equals("null")) {
             	
             }else {

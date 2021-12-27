@@ -1,3 +1,6 @@
+<%@ page import ="petShopProject.beans.Products" %>
+<%@ page import ="java.util.ArrayList" %>
+<%@ page import ="java.util.List" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,8 +40,36 @@
             	out.print("you are not connected");
             } else{
             out.print("connected: "+nameUser);} %></span></div>
+            
+         	<%  List<Products> products = new ArrayList<Products>();            
+            products = (List) application.getAttribute("products");            
+           if(String.valueOf(products).equals("null")) {
+            	
+            }else {
+            for(Products product: products) {
+            	
+            %>
+        	<div class="feat_prod_box">   
+        	  	<div class="prod_img"><a href="details.jsp"><img src="<% out.println(product.getImage()); %>" alt="" title="" border="0" /></a></div>
+                
+                <div class="prod_det_box">
+                	<span class="special_icon"><img src="images/special_icon.gif" alt="" title="" /></span>
+                	<div class="box_top"></div>
+                    <div class="box_center">
+                    <div class="prod_title"><% out.println(product.getTitle()); %></div>
+                    <p class="details"><% out.println(product.getDetails()); %></p>
+                    <a href="mainServ?productId=<%out.println(product.getId()); %>" class="more " >- more details -</a>
+                    <div class="clear"></div>
+                    </div>
+                    
+                    <div class="box_bottom"></div>
+                </div>    
+            <div class="clear"></div>
+            </div>	
+            
+            <%}} %>
         
-        	<div class="feat_prod_box">
+     <!--    	<div class="feat_prod_box">
             
             	<div class="prod_img"><a href="details.jsp"><img src="images/prod1.gif" alt="" title="" border="0" /></a></div>
                 
@@ -73,7 +104,7 @@
                     <div class="box_bottom"></div>
                 </div>    
             <div class="clear"></div>
-            </div>      
+            </div> -->     
             
             
             

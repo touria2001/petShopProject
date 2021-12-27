@@ -193,7 +193,7 @@
               <div class="cart">
                   <div class="title"><span class="title_icon"><img src="images/cart.gif" alt="" title="" /></span>My cart</div>
                   <div class="home_cart_content">
-                  <span><% String s = (String) request.getAttribute("nbrItems");
+                  <span><% String s = (String) application.getAttribute("nbrItems");
                   out.print(s); %></span> x items | <span class="red">TOTAL: 100$</span>
                   </div>
                   <a href="mainServ?cart=click" class="view_cart">view cart</a>

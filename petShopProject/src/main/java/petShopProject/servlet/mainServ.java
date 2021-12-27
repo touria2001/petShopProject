@@ -35,7 +35,7 @@ public class mainServ extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//pour right content
 		request.setAttribute("nbrItems",String.valueOf(utilisateurDao.nombreItems(utilisateurDao.afficherEmail(String.valueOf(session.getAttribute("nameUser"))))));
-        this.getServletContext().getRequestDispatcher("/details.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);
 
 		
 		
@@ -47,7 +47,7 @@ public class mainServ extends HttpServlet {
 	        request.setAttribute("commandes", utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(session.getAttribute("nameUser")))));
 	        
 	    
-	        this.getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);
+	        this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);
 	        }
 		}
 		
@@ -60,7 +60,7 @@ public class mainServ extends HttpServlet {
 	
 		
 		request.setAttribute("products",utilisateurDao.listerProducts());
-        this.getServletContext().getRequestDispatcher("/specials.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);
 
 		
 	}
@@ -87,7 +87,7 @@ public class mainServ extends HttpServlet {
 	        	 session = request.getSession();
 	        	
 	        	session.setAttribute("nameUser",request.getParameter("user"));
-	        	this.getServletContext().getRequestDispatcher("/myaccount.jsp").forward(request, response);
+	        	this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);
 	        }
 	        
 	        //----------------------------------------------------------------------------------------
@@ -106,11 +106,11 @@ public class mainServ extends HttpServlet {
 	        request.setAttribute("commandes", utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(session.getAttribute("nameUser")))));
 	        
 	     //   if(!commande.equals(null)) {
-	        this.getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);}//}
+	        this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);}//}
         //-------------------------------------------------------------------
 	        
 	        //------------------------------------------------------------------------------------------
-	        this.getServletContext().getRequestDispatcher("/myaccount.jsp").forward(request, response);
+	        this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);
 	}
 
 }
