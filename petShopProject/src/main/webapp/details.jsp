@@ -69,6 +69,9 @@
                     <span class="colors"><img src="images/color2.gif" alt="" title="" border="0" /></span>
                     <span class="colors"><img src="images/color3.gif" alt="" title="" border="0" /></span>    
                     </div>
+                    <div class="quantity"><strong>QUANTITY:</strong> 
+                    <input type="number" value="1"/>
+                    </div>
                     
                     <img id="id1"class="order_button" src="images/order_now.gif" alt="" title="" border="0"  />
                   
