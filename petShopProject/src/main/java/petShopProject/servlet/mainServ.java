@@ -34,14 +34,16 @@ public class mainServ extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//pour right content
+		if(request.getSession().getAttribute("nameUser") != null) {
 		request.setAttribute("nbrItems",String.valueOf(utilisateurDao.nombreItems(utilisateurDao.afficherEmail(String.valueOf(session.getAttribute("nameUser"))))));
-        this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);
-
+		}
+        
+		
 		
 		
 		if(!String.valueOf(request.getParameter("cart")).equals("null")) {
-		    session.getAttribute("nameUser");
-	        if(!String.valueOf(session.getAttribute("nameUser")).equals("null")){            	
+		   
+			if(request.getSession().getAttribute("nameUser") != null) {           	
            
              
 	        request.setAttribute("commandes", utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(session.getAttribute("nameUser")))));
@@ -98,8 +100,9 @@ public class mainServ extends HttpServlet {
 	        commande.setPrice(100);
 	        commande.setQuantite(1);
 	        utilisateurDao.ajouterCommande(commande);
-	        session.getAttribute("nameUser");
-	        if(!String.valueOf(session.getAttribute("nameUser")).equals("null")){
+	        if(request.getSession().getAttribute("nameUser") != null) {
+	     
+	      
             	
            
              
