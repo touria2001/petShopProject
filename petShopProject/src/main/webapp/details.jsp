@@ -69,20 +69,25 @@
                     <span class="colors"><img src="images/color2.gif" alt="" title="" border="0" /></span>
                     <span class="colors"><img src="images/color3.gif" alt="" title="" border="0" /></span>    
                     </div>
-                    <div class="quantity"><strong>QUANTITY:</strong> 
-                    <input type="number" value="1"/>
+                    <div class="price"><strong>QUANTITY:</strong> 
+                    <span><input id="quantity" class="quantity" type="number" value="1"/></span>
                     </div>
                     
-                    <img id="id1"class="order_button" src="images/order_now.gif" alt="" title="" border="0"  />
+                    <img id="id1"class="order_button" src="images/order_now.gif" alt="" title="" border="0" style="float:right;margin-right: 20px;" />
                   
                   
                   
                     <form id="form-id"style="display: none;" action="mainServ" method="post">
-                    <input type="text" value="touria@gmail.com" name="emaill"/>
+                    <input id="orderUser" type="text" value="<%
+            
+            if(String.valueOf(session.getAttribute("nameUser")).equals("null")){
+            	out.print("");
+            } else{
+            out.print(String.valueOf(session.getAttribute("nameUser")));} %>" name="emaill"/>
                     <input type="text" value="<% out.println(product.getImage()); %>" name="item_pic"/>
 					<input type="text" value="<% out.println(product.getTitle()); %>" name="item_name"/>
 					  <input type="text" value="<% out.println(product.getPrice());%>" name="price"/>
-					  <input type="text" value="1" name="quantite"/>
+					  <input id="quant" type="text"  name="quantite"/>
                     <input type="submit"/>
                     
                     

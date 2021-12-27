@@ -79,6 +79,7 @@
 
                     
                     <div class="form_row">
+                   
                     <input type="submit" class="register" value="register" />
                     </div>   
                   </form>     

@@ -18,6 +18,7 @@ application.setAttribute("products", request.getAttribute("products"));
 application.setAttribute("resultat", request.getAttribute("resultat"));
 
 application.setAttribute("nameUser", request.getAttribute("nameUser"));
+
 %>
 <jsp:forward page="index.jsp"/>
 </body>

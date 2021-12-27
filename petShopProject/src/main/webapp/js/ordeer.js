@@ -5,8 +5,12 @@
 }*/
 
 document.getElementById("id1").addEventListener("click", function (){
-	
-	document.getElementById("form-id").submit();	
+	document.getElementById("quant").value = document.getElementById("quantity").value;
+
+	if(document.getElementById("orderUser").value.localeCompare("") == 0) {
+		alert("you have to be connected");
+	} else {
+	document.getElementById("form-id").submit();	}
 });
 
 

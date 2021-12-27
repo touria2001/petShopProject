@@ -109,10 +109,13 @@ color:#990000;
 span.red{
 color:#990000;
 }
-.price .quantity{
+.price {
 font-size:14px;
 padding:0 0 0 15px;
 margin:2px 0 5px 0;
+}
+.quantity  {
+	width: 40px;
 }
 span.colors{
 padding:2px 2px 0 2px;

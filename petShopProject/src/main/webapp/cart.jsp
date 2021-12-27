@@ -52,7 +52,9 @@
                 </tr>
                <%
                List<Commande> commandes = new ArrayList<Commande>();            
-               commandes = (List) application.getAttribute("commandes");            
+               commandes = (List) request.getAttribute("commandes"); 
+               application.setAttribute("commandes", request.getAttribute("commandes"));
+               float x = 0.0f;
               if(String.valueOf(commandes).equals("null")) {
                	
                }else {
@@ -64,9 +66,9 @@
                 	<td><% out.println(commande.getItem_name()); %></td>
                     <td><% out.println(commande.getPrice()+"$"); %></td>
                     <td><% out.println(commande.getQuantite()); %></td>
-                    <td><% out.println(commande.getPrice()+"$"); %></td>               
+                    <td><% out.println(commande.getPrice()*commande.getQuantite()+"$"); %></td>               
                 </tr>   
-                <% }} %>       
+                <% x+=commande.getPrice()*commande.getQuantite();}} %>       
             <!--  	<tr>
                 	<td><a href="details.jsp"><img src="images/cart_thumb.gif" alt="" title="" border="0" class="cart_thumb" /></a></td>
                 	<td>Books</td>
@@ -89,7 +91,7 @@
                 
                 <tr>
                 <td colspan="4" class="cart_total"><span class="red">TOTAL:</span></td>
-                <td> 325$</td>                
+                <td> <% out.println(x+"$");%></td>                
                 </tr>                  
             
             </table>
