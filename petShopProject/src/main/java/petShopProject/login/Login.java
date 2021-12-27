@@ -24,8 +24,10 @@ public class Login {
         for(Utilisateur usr1 : utilisateurs) {
         	if(usr1.getUsername().equals(user) && usr1.getPassword().equals(pass)) {
         		resultat = "you are connected";
+        		
         	}else {
         		resultat="incorrect username or password";
+        		
         	}
         	}
         }

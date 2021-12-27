@@ -10,27 +10,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 <title>Pet Shop</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
-
-<script type="text/javascript">
-
-
-function valider() {
-  // si la valeur du champ prenom est non vide
-  if((document.contact.username.value == "") || (document.contact.email.value == "")||(document.contact.phone.value == "") || (document.contact.company.value == "") || (document.contact.message.value == "")){
-    // alors on envoie le formulaire
-    { alert("veuiller remplir tout les champs ");
-    document.contact.username.focus();
-    return false;
-    }
-   
-    }
-  }
- 
-}
-
-//]]>
-</script>
-
 </head>
 <body>
 <div id="wrap">
@@ -67,60 +46,42 @@ function valider() {
             <p class="details">
              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
             </p>
-            <form method="post" name ="contact" action="Reponse.jsp">
+            <form method="post" action="mainServ">
               	<div class="contact_form">
                 <div class="form_subtitle">all fields are requierd</div>          
                     <div class="form_row">
                     <label class="contact"><strong>Name:</strong></label>
-                    <input type="text" class="contact_input" name="username"   />
-                    
+                    <input type="text" class="contact_input" name="username" />
                     </div>  
 
                     <div class="form_row">
                     <label class="contact"><strong>Email:</strong></label>
-                    <input  type="text" class="contact_input" name="email"  value=" <% if(contact!=null) 
-                    	{out.print(contact.getEmail());} 
-                    else {
-                    	out.print(" ");
-                    	
-                    	
-                    }
-                    %>"  autocomplete="off" />
+                    <input type="text" class="contact_input" name="email"   />
                     </div>
 
 
                     <div class="form_row">
                     <label class="contact"><strong>Phone:</strong></label>
-                    <input type="text" class="contact_input" name="phone" value=" <% if(contact!=null) 
-                    	{out.print(contact.getPhone());} 
-                    else {
-                    	out.print(" ");
-                    }
-                    %>" />
+                    <input type="text" class="contact_input" name="phone" />
                     </div>
                     
                     <div class="form_row">
                     <label class="contact"><strong>Company:</strong></label>
-                    <input type="text" class="contact_input" name="company" value=" <% if(contact!=null) 
-                    	{out.print(contact.getCompany());} 
-                    else {
-                    	out.print(" ");
-                    }
-                    %>" />
+                    <input type="text" class="contact_input" name="company" />
                     </div>
 
 
                     <div class="form_row">
                     <label class="contact"><strong>Message:</strong></label>
-                    <textarea class="contact_textarea" name ="message" ></textarea>
+                    <textarea class="contact_textarea" ></textarea>
                     </div>
 
                     
                     <div class="form_row">
-                   <!--   <a href="Reponse.jsp" class="contact" onclick="valider()">send</a>   -->
-                   
-                   <input type="submit"  name ="submit" style="color:green" value="send"  onclick=" return valider();">   
-                    </div>      
+                    <a href="#" class="contact">send</a>            
+                    </div>  
+                    <br/>
+                    <p style="color:red">Merci de nous conctacter,On va essayer de vous répondre au plus tot possible</p>   
                 </div> 
                 </form> 
             
@@ -258,8 +219,5 @@ function valider() {
 
 </div>
 
-
 </body>
-
-
 </html>
