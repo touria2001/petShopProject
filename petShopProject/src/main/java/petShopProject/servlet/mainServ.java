@@ -1,6 +1,8 @@
 package petShopProject.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +38,13 @@ public class mainServ extends HttpServlet {
 		
 		//pour right content
 		if(request.getSession().getAttribute("nameUser") != null) {
+		    List<Commande> commandes = new ArrayList<Commande>();
+            float total= 0.0f;
+            commandes =  utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser"))));
+            for(Commande cmd : commandes) {
+            	total+=cmd.getPrice();
+            }
+            request.setAttribute("total",total);	
 		request.setAttribute("nbrItems",String.valueOf(utilisateurDao.nombreItems(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser"))))));
 		}
         
@@ -50,7 +59,7 @@ public class mainServ extends HttpServlet {
 	        request.setAttribute("commandes", utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser")))));
 	        
 	    
-	        this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);
+	        this.getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);
 	        }
 		}
 		
@@ -71,6 +80,16 @@ public class mainServ extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("products",utilisateurDao.listerProducts());
+		if(request.getSession().getAttribute("nameUser") != null) {
+		    List<Commande> commandes = new ArrayList<Commande>();
+            float total= 0.0f;
+            commandes =  utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser"))));
+            for(Commande cmd : commandes) {
+            	total+=cmd.getPrice();
+            }
+            request.setAttribute("total",total);	
+		request.setAttribute("nbrItems",String.valueOf(utilisateurDao.nombreItems(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser"))))));
+		}
         //-----------------------------------------------------------------------
 		if(!String.valueOf(request.getParameter("username")).equals("null")) {
 		 Utilisateur utilisateur = new Utilisateur();
@@ -104,7 +123,7 @@ public class mainServ extends HttpServlet {
 	        commande.setQuantite(Integer.parseInt(request.getParameter("quantite")));
 	        utilisateurDao.ajouterCommande(commande);
 	        if(request.getSession().getAttribute("nameUser") != null) {              	
-	            
+	        
 		        request.setAttribute("commandes", utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser")))));	        
 		     
 		        this.getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);}}
