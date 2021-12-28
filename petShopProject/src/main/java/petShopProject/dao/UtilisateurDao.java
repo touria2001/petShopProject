@@ -17,6 +17,7 @@ public interface UtilisateurDao {
     Products afficherProduit(int id);
     List<Commande> afficherCommande(String mail);
     String afficherEmail(String user);
+    
     int nombreItems(String mail);
 
 

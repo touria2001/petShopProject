@@ -4,27 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 <title>Pet Shop</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
-
-<script type="text/javascript">
-
-
-function valider() {
-  // si la valeur du champ prenom est non vide
-  if((document.admin.user.value == "") || (document.admin.pass.value == "")){
-    // alors on envoie le formulaire
-    { alert("veuiller remplir tout les champs ");
-    document.contact.username.focus();
-    return false;
-    }
-   
-    }
-  }
- 
-}
-
-//]]>
-</script>
-
 </head>
 <body>
 <div id="wrap">
@@ -51,7 +30,7 @@ function valider() {
        
        <div class="center_content">
        	<div class="left_content">
-            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>Admin account<span style="margin-left:40px; color:green;font-size:13px;"> <%
+            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>My account <span style="margin-left:40px; color:green;font-size:13px;"> <%
             String nameUser = (String) session.getAttribute("nameUser");
             if(String.valueOf(session.getAttribute("nameUser")).equals("null")){
             	out.print("you are not connected");
@@ -66,42 +45,19 @@ function valider() {
             </p>
             
               	<div class="contact_form">
-                <div class="form_subtitle">Admin</div>
+                <div class="form_subtitle">login into your account</div>
                  <form name="admin" action="Adminservlet" method="post">          
                     <div class="form_row">
-                    <label class="contact" ><strong>Username:</strong></label>
-                    <input type="text" class="contact_input" name="user" />
-                    </div>  
-
-
+                    <label class="contact" ><strong>Copier l'URL de la photo:</strong></label>
+                    <input type="text" class="contact_input" name="photo" />
+                    </div>                                        
                     <div class="form_row">
-                    <label class="contact" ><strong>Password:</strong></label>
-                    <input type="password" class="contact_input" name="pass" />
-                    </div>                     
-
-                    <div class="form_row">
-                        <div class="terms">
-                        <input type="checkbox" name="terms" />
-                        Remember me
-                        </div>
-                    </div> 
-
-                    
-                    <div class="form_row">
-                    <input type="submit" class="register" value="login" onclick="return onclick();"/>
+                    <input type="submit" class="register" value="Ajouter" />
                     </div>   
                     
                   </form>     
-                    <p style="color:red" >Cette page est specifier a l'admin!</p>
-                    <br>
-                    <p> c'est page doit etre suppr apres. c'est juste pour M.Berrich por que vous pouvez ajouter des articles
-                    <br>
-                    les informations de l'admin sont les suivants:
-                     <br>
-                     le Login : tatatat 
-                      <br>
-                      Le mot de passe :toto
-                    </p>
+                    <p style="color:red" >Cette page est specifier pou ajouter des articles par l'admin!</p>
+                   
                     
                 </div>  
             

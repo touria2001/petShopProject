@@ -39,4 +39,14 @@
     <servlet-name>mainAdmin</servlet-name>
     <url-pattern>/mainAdmin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Adminservlet</display-name>
+    <servlet-name>Adminservlet</servlet-name>
+    <servlet-class>petShopProject.servlet.Adminservlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Adminservlet</servlet-name>
+    <url-pattern>/Adminservlet</url-pattern>
+  </servlet-mapping>
 </web-app>

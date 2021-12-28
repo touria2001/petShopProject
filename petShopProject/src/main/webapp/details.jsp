@@ -49,6 +49,9 @@
             </div>
             <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span><% Products product = new Products();
             product = (Products) request.getAttribute("produit");
+            if( product == null){
+            	out.print("");%></div><%
+            }else{
             out.println(product.getTitle());
             %></div>
         
@@ -70,20 +73,25 @@
                     <span class="colors"><img src="images/color2.gif" alt="" title="" border="0" /></span>
                     <span class="colors"><img src="images/color3.gif" alt="" title="" border="0" /></span>    
                     </div>
-                    <div class="quantity"><strong>QUANTITY:</strong> 
-                    <input type="number" value="1"/>
+                    <div class="price"><strong>QUANTITY:</strong> 
+                    <span><input id="quantity" class="quantity" type="number" value="1"/></span>
                     </div>
                     
-                    <img id="id1"class="order_button" src="images/order_now.gif" alt="" title="" border="0"  />
+                    <img id="id1"class="order_button" src="images/order_now.gif" alt="" title="" border="0" style="float:right;margin-right: 20px;" />
                   
                   
                   
                     <form id="form-id"style="display: none;" action="mainServ" method="post">
-                    <input type="text" value="touria@gmail.com" name="emaill"/>
+                    <input id="orderUser" type="text" value="<%
+            
+            if(String.valueOf(session.getAttribute("nameUser")).equals("null") ||  product == null){
+            	out.print("");
+            } else{
+            out.print(String.valueOf(session.getAttribute("nameUser"))); %>" name="emaill"/>
                     <input type="text" value="<% out.println(product.getImage()); %>" name="item_pic"/>
 					<input type="text" value="<% out.println(product.getTitle()); %>" name="item_name"/>
-					  <input type="text" value="<% out.println(product.getPrice());%>" name="price"/>
-					  <input type="text" value="1" name="quantite"/>
+					  <input type="text" value="<% out.println(product.getPrice());}%>" name="price"/>
+					  <input id="quant" type="text"  name="quantite"/>
                     <input type="submit"/>
                     
                     
@@ -176,108 +184,13 @@
 
             
         <div class="clear"></div>
+        <%} %>
         </div><!--end of left content-->
         
-        <div class="right_content">
+      <jsp:include page="rightContent.jsp"/>
         
-                	<div class="languages_box">
-            <span class="red">Languages:</span>
-            <a href="#"><img src="images/gb.gif" alt="" title="" border="0" /></a>
-            <a href="#"><img src="images/fr.gif" alt="" title="" border="0" /></a>
-            <a href="#"><img src="images/de.gif" alt="" title="" border="0" /></a>
-            </div>
-                <div class="currency">
-                <span class="red">Currency: </span>
-                <a href="#">GBP</a>
-                <a href="#">EUR</a>
-                <a href="#"><strong>USD</strong></a>
-                </div>
-                
-                
-              <div class="cart">
-                  <div class="title"><span class="title_icon"><img src="images/cart.gif" alt="" title="" /></span>My cart</div>
-                  <div class="home_cart_content">
-                  <span><% String s = (String) application.getAttribute("nbrItems");
-                  out.print(s); %></span> x items | <span class="red">TOTAL: 100$</span>
-                  </div>
-                  <a href="mainServ?cart=click" class="view_cart">view cart</a>
-              
-              </div>
-        
-             <div class="title"><span class="title_icon"><img src="images/bullet3.gif" alt="" title="" /></span>About Our Shop</div> 
-             <div class="about">
-             <p>
-             <img src="images/about.gif" alt="" title="" class="right" />
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
-             </p>
-             
-             </div>
-             
-             <div class="right_box">
-             
-             	<div class="title"><span class="title_icon"><img src="images/bullet4.gif" alt="" title="" /></span>Promotions</div> 
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.jsp"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.jsp"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                    
-                    
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.jsp"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>               
-             
-             </div>
-             
-             <div class="right_box">
-             
-             	<div class="title"><span class="title_icon"><img src="images/bullet5.gif" alt="" title="" /></span>Categories</div> 
-                
-                <ul class="list">
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">pets gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">pets gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">pets gifts</a></li>
-                <li><a href="#">specials</a></li>                                              
-                </ul>
-                
-             	<div class="title"><span class="title_icon"><img src="images/bullet6.gif" alt="" title="" /></span>Partners</div> 
-                
-                <ul class="list">
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">pets gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>
-                <li><a href="#">pets gifts</a></li>
-                <li><a href="#">specials</a></li>
-                <li><a href="#">hollidays gifts</a></li>
-                <li><a href="#">accesories</a></li>                              
-                </ul>      
-             
-             </div>         
-             
-        
-        </div><!--end of right content-->
+       
+        <!--end of right content-->
         
         
        

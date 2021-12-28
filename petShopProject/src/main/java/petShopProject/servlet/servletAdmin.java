@@ -1,4 +1,4 @@
-package petShopProject.login;
+package petShopProject.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import petShopProject.dao.DaoFactory;
 import petShopProject.dao.UtilisateurDao;
+import petShopProject.login.Login;
 
 
 public class servletAdmin extends HttpServlet {
@@ -34,16 +35,17 @@ public class servletAdmin extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		  Login login = new Login();
-	        login.verifierIdentifiants(request);
-	        request.setAttribute("resultat", login.getResultat());
-	        
-	        if(login.getResultat().equals("you are connected") ) {
-	        	 session = request.getSession();
-	        	
-	        	session.setAttribute("nameUser",request.getParameter("user"));
-	        	this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);
-	        }
+		 String user = request.getParameter("user") ;
+		 String pass = request.getParameter("pass") ;
+
+		 if((user=="Admin")&& (pass=="admin"))
+				 {
+			 this.getServletContext().getRequestDispatcher("register.jsp").forward(request, response);
+			 
+				 }
+	
+	
+	
 		
 	}
 
