@@ -19,6 +19,8 @@ application.setAttribute("resultat", request.getAttribute("resultat"));
 
 application.setAttribute("nameUser", request.getAttribute("nameUser"));
 application.setAttribute("total", request.getAttribute("total"));
+application.setAttribute("devise", request.getAttribute("devise"));
+
 
 
 %>

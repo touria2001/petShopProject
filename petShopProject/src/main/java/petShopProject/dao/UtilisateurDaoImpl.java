@@ -40,6 +40,14 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	            preparedStatement.executeUpdate();
 	        } catch (SQLException e) {
 	            e.printStackTrace();
+	        }finally {
+	            // Fermeture de la connexion
+	            try {
+	            
+	                if (connexion != null)
+	                    connexion.close();
+	            } catch (SQLException ignore) {
+	            }
 	        }
 
 	    }
@@ -67,7 +75,19 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
+	        }finally {
+	            // Fermeture de la connexion
+	            try {
+	                if (resultat != null)
+	                    resultat.close();
+	                if (statement != null)
+	                    statement.close();
+	                if (connexion != null)
+	                    connexion.close();
+	            } catch (SQLException ignore) {
+	            }
 	        }
+	        
 	        return utilisateurs;
 	    }
 	    @Override
@@ -89,6 +109,14 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		            preparedStatement.executeUpdate();
 		        } catch (SQLException e) {
 		            e.printStackTrace();
+		        }finally {
+		            // Fermeture de la connexion
+		            try {
+		              
+		                if (connexion != null)
+		                    connexion.close();
+		            } catch (SQLException ignore) {
+		            }
 		        }
 	    	
 	    	
@@ -131,6 +159,17 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
+	        }finally {
+	            // Fermeture de la connexion
+	            try {
+	                if (resultat != null)
+	                    resultat.close();
+	                if (statement != null)
+	                    statement.close();
+	                if (connexion != null)
+	                    connexion.close();
+	            } catch (SQLException ignore) {
+	            }
 	        }
 	        return products;
 	    }
@@ -166,6 +205,17 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	                product.setDevise(devise);
 		    	    }} catch (SQLException e) {
 		            e.printStackTrace();
+		        }finally {
+		            // Fermeture de la connexion
+		            try {
+		                if (resultat != null)
+		                    resultat.close();
+		                if (statement != null)
+		                    statement.close();
+		                if (connexion != null)
+		                    connexion.close();
+		            } catch (SQLException ignore) {
+		            }
 		        }
 		        
                 return product;
@@ -207,6 +257,17 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		            }
 		        } catch (SQLException e) {
 		            e.printStackTrace();
+		        }finally {
+		            // Fermeture de la connexion
+		            try {
+		                if (resultat != null)
+		                    resultat.close();
+		                if (statement != null)
+		                    statement.close();
+		                if (connexion != null)
+		                    connexion.close();
+		            } catch (SQLException ignore) {
+		            }
 		        }
 		        return commandes;
 	
@@ -232,6 +293,17 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	 		            }
 	 		        } catch (SQLException e) {
 	 		            e.printStackTrace();
+	 		        }finally {
+	 		            // Fermeture de la connexion
+	 		            try {
+	 		                if (resultat != null)
+	 		                    resultat.close();
+	 		                if (statement != null)
+	 		                    statement.close();
+	 		                if (connexion != null)
+	 		                    connexion.close();
+	 		            } catch (SQLException ignore) {
+	 		            }
 	 		        }
 	 		        return email;
 	 	
@@ -256,9 +328,205 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
+	        }finally {
+	            // Fermeture de la connexion
+	            try {
+	                if (resultat != null)
+	                    resultat.close();
+	                if (statement != null)
+	                    statement.close();
+	                if (connexion != null)
+	                    connexion.close();
+	            } catch (SQLException ignore) {
+	            }
 	        }
 	        return i;
 	    }
+	    @Override
+ 		public void changerDeviseToGbp()  {
+    	String dev= null;
+ 		        Connection connexion = null;
+ 		        Statement statement = null;
+ 		        ResultSet resultat = null;
+
+ 		        try {
+ 		            connexion = daoFactory.getConnection();
+ 		            statement = connexion.createStatement();
+ 		           resultat = statement.executeQuery("SELECT devise from products where 1  ;");
+ 		       
+ 		           while (resultat.next()) {
+ 		            	dev = resultat.getString("devise"); 		            
+ 		            }
+ 		         
+ 		           
+ 		          if(dev != null && dev.equals("$")) {
+ 		        	  
+ 	 		            statement.executeUpdate("UPDATE  products SET price = price/1.34 , devise = 'GBP';");
+ 	 		            statement.executeUpdate("UPDATE  commande SET price = price/1.34 , devise = 'GBP';");
+
+
+ 		          }else if(dev != null && dev.equals("EUR")) {
+ 	 		            statement.executeUpdate("UPDATE  products  SET price = price * 0.84, devise ='GBP';");
+ 	 		            statement.executeUpdate("UPDATE  products  SET price = price * 0.84, devise='GBP';");
+
+
+ 		          }
+ 		            	
+ 		            
+ 		         
+ 		        } catch (SQLException e) {
+ 		            e.printStackTrace();
+ 		        }finally {
+ 		            // Fermeture de la connexion
+ 		            try {
+ 		                if (resultat != null)
+ 		                    resultat.close();
+ 		                if (statement != null)
+ 		                    statement.close();
+ 		                if (connexion != null)
+ 		                    connexion.close();
+ 		            } catch (SQLException ignore) {
+ 		            }
+ 		        }     
+ 	
+
+ 	  }
+	    @Override
+ 		public void changerDeviseToEur()  {
+    	String dev= null;
+ 		        Connection connexion = null;
+ 		        Statement statement = null;
+ 		        ResultSet resultat = null;
+
+ 		        try {
+ 		            connexion = daoFactory.getConnection();
+ 		            statement = connexion.createStatement();
+ 		           resultat = statement.executeQuery("SELECT devise from products where 1  ;");
+ 		       
+ 		           while (resultat.next()) {
+ 		            	dev = resultat.getString("devise"); 		            
+ 		            }
+ 		         
+ 		           
+ 		          if(dev != null && dev.equals("$")) {
+ 		        	  
+ 	 		            statement.executeUpdate("UPDATE  products SET price = price*0.88 , devise = 'EUR';");
+ 	 		            statement.executeUpdate("UPDATE  commande SET price = price*0.88 , devise = 'EUR';");
+
+
+ 		          }else if(dev != null && dev.equals("GBP")) {
+ 	 		            statement.executeUpdate("UPDATE  products  SET price = price * 1.19, devise ='EUR';");
+ 	 		            statement.executeUpdate("UPDATE  products  SET price = price * 1.19, devise='EUR';");
+
+
+ 		          }
+ 		            	
+ 		            
+ 		         
+ 		        } catch (SQLException e) {
+ 		            e.printStackTrace();
+ 		        }finally {
+ 		            // Fermeture de la connexion
+ 		            try {
+ 		                if (resultat != null)
+ 		                    resultat.close();
+ 		                if (statement != null)
+ 		                    statement.close();
+ 		                if (connexion != null)
+ 		                    connexion.close();
+ 		            } catch (SQLException ignore) {
+ 		            }
+ 		        }     
+ 	
+
+ 	  }
+	    @Override
+ 		public void changerDeviseToDollar()  {
+    	String dev= null;
+ 		        Connection connexion = null;
+ 		        Statement statement = null;
+ 		        ResultSet resultat = null;
+
+ 		        try {
+ 		            connexion = daoFactory.getConnection();
+ 		            statement = connexion.createStatement();
+ 		           resultat = statement.executeQuery("SELECT devise from products where 1  ;");
+ 		       
+ 		           while (resultat.next()) {
+ 		            	dev = resultat.getString("devise"); 		            
+ 		            }
+ 		         
+ 		           
+ 		          if(dev != null && dev.equals("EUR")) {
+ 		        	  
+ 	 		            statement.executeUpdate("UPDATE  products SET price = price/0.88 , devise = '$';");
+ 	 		            statement.executeUpdate("UPDATE  commande SET price = price/0.88 , devise = '$';");
+
+
+ 		          }else if(dev != null && dev.equals("GBP")) {
+ 	 		            statement.executeUpdate("UPDATE  products  SET price = price * 1.34, devise ='$';");
+ 	 		            statement.executeUpdate("UPDATE  products  SET price = price * 1.34, devise='$';");
+
+
+ 		          }
+ 		            	
+ 		            
+ 		         
+ 		        } catch (SQLException e) {
+ 		            e.printStackTrace();
+ 		        }finally {
+ 		            // Fermeture de la connexion
+ 		            try {
+ 		                if (resultat != null)
+ 		                    resultat.close();
+ 		                if (statement != null)
+ 		                    statement.close();
+ 		                if (connexion != null)
+ 		                    connexion.close();
+ 		            } catch (SQLException ignore) {
+ 		            }
+ 		        }     
+ 	
+
+ 	  }
+	    @Override
+ 		public String returnDevise()  {
+    	String dev= null;
+ 		        Connection connexion = null;
+ 		        Statement statement = null;
+ 		        ResultSet resultat = null;
+
+ 		        try {
+ 		            connexion = daoFactory.getConnection();
+ 		            statement = connexion.createStatement();
+ 		           resultat = statement.executeQuery("SELECT devise from products where 1  ;");
+ 		       
+ 		           while (resultat.next()) {
+ 		            	dev = resultat.getString("devise"); 		            
+ 		            }
+ 		         
+ 		        
+ 		            	
+ 		            
+ 		         
+ 		        } catch (SQLException e) {
+ 		            e.printStackTrace();
+ 		        }finally {
+ 		            // Fermeture de la connexion
+ 		            try {
+ 		                if (resultat != null)
+ 		                    resultat.close();
+ 		                if (statement != null)
+ 		                    statement.close();
+ 		                if (connexion != null)
+ 		                    connexion.close();
+ 		            } catch (SQLException ignore) {
+ 		            }
+ 		        } 
+ 		        return dev;
+ 	
+
+ 	  }
 	
 
 }

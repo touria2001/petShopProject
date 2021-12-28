@@ -16,6 +16,12 @@ public interface UtilisateurDao {
     String afficherEmail(String user);
     
     int nombreItems(String mail);
+    
+     void changerDeviseToGbp();
+     void changerDeviseToEur();
+     void changerDeviseToDollar();
+     String returnDevise();
+    
 
 
 }

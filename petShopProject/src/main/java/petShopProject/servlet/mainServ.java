@@ -38,38 +38,33 @@ public class mainServ extends HttpServlet {
 		
 		//pour right content
 		if(request.getSession().getAttribute("nameUser") != null) {
-			if(request.getParameter("devise").equals("GBP")) {
-				if(utilisateurDao.listerProducts()!=null) {
-				   if(   utilisateurDao.listerProducts().get(0).getDevise().equals("$")) {
-				      utilisateurDao.listerProducts().forEach((prd) -> {
-				      prd.setDevise("GBP");
-				      float f = (float) (prd.getPrice()/1.34);
-				      prd.setPrice(f);
-				      });      
-				}else if(utilisateurDao.listerProducts().get(0).getDevise().equals("EUR")) {
-					   utilisateurDao.listerProducts().forEach((prd) -> {
-						      prd.setDevise("GBP");
-						      float f = (float) (prd.getPrice()*0.84);
-						      prd.setPrice(f);
-						      });  
-					
-				}}
+			if(request.getParameter("devise")!=null) {
 				
-				
-				
-			}else if(request.getParameter("devise").equals("EUR")) {
-			}else if(request.getParameter("devise").equals("USD")) {}
+		              	if(request.getParameter("devise").equals("GBP")) {
+				              utilisateurDao.changerDeviseToGbp();
+			              }else if(request.getParameter("devise").equals("EUR")) {
+			            	  utilisateurDao.changerDeviseToEur();
+			              }else if(request.getParameter("devise").equals("$")) {
+			            	  utilisateurDao.changerDeviseToDollar();
+			              }          	
+			
 			}
+			
+			
+			
+			//--------------------------------------------------
+			
 		    List<Commande> commandes = new ArrayList<Commande>();
             float total= 0.0f;
             commandes =  utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser"))));
             for(Commande cmd : commandes) {
             	total+=cmd.getPrice();
             }
+            request.setAttribute("devise", utilisateurDao.returnDevise());
             request.setAttribute("total",total);	
 		request.setAttribute("nbrItems",String.valueOf(utilisateurDao.nombreItems(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser"))))));
 		}
-        
+        //---------------------------------------------------------
 		
 		
 		
@@ -99,6 +94,9 @@ public class mainServ extends HttpServlet {
 		
 	}
 
+	//------------------------------------------------post-----------------------------------------------
+	
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("products",utilisateurDao.listerProducts());
@@ -131,6 +129,16 @@ public class mainServ extends HttpServlet {
 	        	  
 	        	
 	        	  request.getSession().setAttribute("nameUser",request.getParameter("user"));
+	        	  List<Commande> commandes = new ArrayList<Commande>();
+	              float total= 0.0f;
+	              commandes =  utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser"))));
+	              for(Commande cmd : commandes) {
+	              	total+=cmd.getPrice();
+	              }
+	              request.setAttribute("devise", utilisateurDao.returnDevise());
+	              request.setAttribute("total",total);	
+	  		request.setAttribute("nbrItems",String.valueOf(utilisateurDao.nombreItems(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser"))))));
+	        	  
 	        	this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);
 	        }
 	        

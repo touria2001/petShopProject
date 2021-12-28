@@ -1,6 +1,9 @@
 <%@ page import ="petShopProject.beans.Products" %>
+<%@ page import =" java.text.DecimalFormat"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<% DecimalFormat df = new DecimalFormat("0.00") %>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
@@ -66,7 +69,7 @@
                     <div class="box_center">
                     <div class="prod_title">Details</div>
                     <p id="detail_detail" class="details"><% out.println(product.getDetails()); %></p>
-                    <div class="price"><strong>PRICE:</strong> <span class="red"><% out.println(product.getPrice());%> $</span></div>
+                    <div class="price"><strong>PRICE:</strong> <span class="red"><% out.println(df.format(product.getPrice())+""+product.getDevise());%> </span></div>
                     <div class="price"><strong>COLORS:</strong> 
                     <span class="colors"><img src="images/color1.gif" alt="" title="" border="0" /></span>
                     <span class="colors"><img src="images/color2.gif" alt="" title="" border="0" /></span>

@@ -1,6 +1,10 @@
 <%@ page import ="petShopProject.beans.Commande" %>
 <%@ page import ="java.util.ArrayList" %>
 <%@ page import ="java.util.List" %>
+<%@ page import =" java.text.DecimalFormat"%>
+
+
+<% DecimalFormat df = new DecimalFormat("0.00") %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,6 +59,7 @@
                commandes = (List) request.getAttribute("commandes"); 
                application.setAttribute("commandes", request.getAttribute("commandes"));
                float x = 0.0f;
+               String devise= "$";
               if(String.valueOf(commandes).equals("null")) {
                	
                }else {
@@ -64,11 +69,12 @@
             	<tr>
                 	<td><a href="details.jsp"><img src="<% out.println(commande.getItem_pic()); %>" alt="" title="" border="0" class="cart_thumb" /></a></td>
                 	<td><% out.println(commande.getItem_name()); %></td>
-                    <td><% out.println(commande.getPrice()+"$"); %></td>
+                    <td><% out.println(df.format(commande.getPrice())+""+commande.getDevise()); %></td>
                     <td><% out.println(commande.getQuantite()); %></td>
-                    <td><% out.println(commande.getPrice()*commande.getQuantite()+"$"); %></td>               
+                    <td><% out.println(df.format(commande.getPrice()*commande.getQuantite())+""+commande.getDevise()); %></td>               
                 </tr>   
-                <% x+=commande.getPrice()*commande.getQuantite();}} %>       
+                <% x+=commande.getPrice()*commande.getQuantite();
+                 devise = commande.getDevise();}} %>       
             <!--  	<tr>
                 	<td><a href="details.jsp"><img src="images/cart_thumb.gif" alt="" title="" border="0" class="cart_thumb" /></a></td>
                 	<td>Books</td>
@@ -86,12 +92,12 @@
 -->
                 <tr>
                 <td colspan="4" class="cart_total"><span class="red">TOTAL SHIPPING:</span></td>
-                <td> 250$</td>                
+                <td> 250+<%=devise%></td>                
                 </tr>  
                 
                 <tr>
                 <td colspan="4" class="cart_total"><span class="red">TOTAL:</span></td>
-                <td> <% out.println(x+"$");%></td>                
+                <td> <% out.println(df.format(x)+""+devise);%></td>                
                 </tr>                  
             
             </table>

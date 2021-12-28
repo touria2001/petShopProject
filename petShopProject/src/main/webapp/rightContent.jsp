@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import =" java.text.DecimalFormat"%>
+    
 
 
 
@@ -28,7 +30,8 @@
                 		  if(String.valueOf(application.getAttribute("total")).equals("null")){
                 			  out.print("0");
                 		  }else {
-                		  out.print(String.valueOf(application.getAttribute("total"))); }%>$</span>
+                			  DecimalFormat dff = new DecimalFormat("0.00");
+                		  out.print(dff.format(String.valueOf(application.getAttribute("total")))+""+String.valueOf(application.getAttribute("devise"))); }%></span>
                   </div>
                   <a href="mainServ?cart=click" class="view_cart">view cart</a>
               
