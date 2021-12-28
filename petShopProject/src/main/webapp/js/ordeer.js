@@ -14,11 +14,28 @@ document.getElementById("id1").addEventListener("click", function (){
 });
 
 
-function show() {
-	alert(document.getElementById("image_productName").textContent);
-		document.getElementById("image_productName").append("ffffffffffffffff");
+/*function GBP(e){	
 
-	/*document.getElementById("image_productName").append("<span class=\"title_icon\"><img  src="+document.getElementById("image_specials").src+
-	" alt=\"\" title=\"\" /></span>"+document.getElementById("productName_specials").textContent);
-	document.getElementById("image_productName").append("ffffffffffffffff");*/
-}
+	e.preventDefault();
+ 
+
+	if(document.getElementById("devise").textContent == "$"){
+		document.getElementById("devise").textContent= "GBP";
+		var s = document.getElementById("total").textContent;
+		var x = s/1.34;
+		document.getElementById("total").textContent = Math.round(x * 100) / 100;
+	}else if(document.getElementById("devise").textContent == "EUR"){
+		document.getElementById("devise").textContent= "GBP";
+		var s = document.getElementById("total").textContent;
+		var x = s*0.84;
+		document.getElementById("total").textContent = Math.round(x * 100) / 100;
+	}else{
+		
+	}
+}*/
+
+
+
+
+
+

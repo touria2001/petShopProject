@@ -1,7 +1,15 @@
 package petShopProject.beans;
 
 public class Products {
-	private String image,title,details;
+	private String image,title,details,devise;
+	public String getDevise() {
+		return devise;
+	}
+
+	public void setDevise(String devise) {
+		this.devise = devise;
+	}
+
 	private int id, quantite;
 	public int getId() {
 		return id;

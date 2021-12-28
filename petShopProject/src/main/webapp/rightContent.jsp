@@ -12,9 +12,9 @@
             </div>
                 <div class="currency">
                 <span class="red">Currency: </span>
-                <a href="#">GBP</a>
-                <a href="#">EUR</a>
-                <a href="#"><strong>USD</strong></a>
+                <a href="mainServ?devise=GBP" >GBP</a>
+                <a href="mainServ?devise=EUR" >EUR</a>
+                <a href="mainServ?devise=USD" ><strong>USD</strong></a>
                 </div>
                 
                 
@@ -108,6 +108,7 @@
                      
         </div><!--end of right content-->
         
+
        
             
         

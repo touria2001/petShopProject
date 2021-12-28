@@ -1,8 +1,16 @@
 package petShopProject.beans;
 
 public class Commande {
- private String email, item_pic,item_name;
- private int id, quantite;
+ private String email, item_pic,item_name,devise;
+ public String getDevise() {
+	return devise;
+}
+
+public void setDevise(String devise) {
+	this.devise = devise;
+}
+
+private int id, quantite;
  private float price;
 public float getPrice() {
 	return price;

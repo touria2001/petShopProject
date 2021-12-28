@@ -38,6 +38,28 @@ public class mainServ extends HttpServlet {
 		
 		//pour right content
 		if(request.getSession().getAttribute("nameUser") != null) {
+			if(request.getParameter("devise").equals("GBP")) {
+				if(utilisateurDao.listerProducts()!=null) {
+				   if(   utilisateurDao.listerProducts().get(0).getDevise().equals("$")) {
+				      utilisateurDao.listerProducts().forEach((prd) -> {
+				      prd.setDevise("GBP");
+				      float f = (float) (prd.getPrice()/1.34);
+				      prd.setPrice(f);
+				      });      
+				}else if(utilisateurDao.listerProducts().get(0).getDevise().equals("EUR")) {
+					   utilisateurDao.listerProducts().forEach((prd) -> {
+						      prd.setDevise("GBP");
+						      float f = (float) (prd.getPrice()*0.84);
+						      prd.setPrice(f);
+						      });  
+					
+				}}
+				
+				
+				
+			}else if(request.getParameter("devise").equals("EUR")) {
+			}else if(request.getParameter("devise").equals("USD")) {}
+			}
 		    List<Commande> commandes = new ArrayList<Commande>();
             float total= 0.0f;
             commandes =  utilisateurDao.afficherCommande(utilisateurDao.afficherEmail(String.valueOf(request.getSession().getAttribute("nameUser"))));

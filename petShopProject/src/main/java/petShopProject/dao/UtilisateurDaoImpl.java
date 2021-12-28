@@ -77,13 +77,14 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 		        try {
 		            connexion = daoFactory.getConnection();
-		            preparedStatement = connexion.prepareStatement("INSERT INTO commande(email, item_pic, item_name, price, quantite) VALUES(?, ?,?,?,?);");
+		            preparedStatement = connexion.prepareStatement("INSERT INTO commande(email, item_pic, item_name, price, quantite,devise) VALUES(?, ?,?,?,?,?);");
 		            preparedStatement.setString(1, commande.getEmail());
 		            preparedStatement.setString(2, commande.getItem_pic());
 		            preparedStatement.setString(3, commande.getItem_name());
 		            preparedStatement.setFloat(4, commande.getPrice());
 		            preparedStatement.setInt(5, commande.getQuantite());
-		            
+		            preparedStatement.setString(6, commande.getDevise());
+
 
 		            preparedStatement.executeUpdate();
 		        } catch (SQLException e) {
@@ -104,7 +105,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	        try {
 	            connexion = daoFactory.getConnection();
 	            statement = connexion.createStatement();
-	            resultat = statement.executeQuery("SELECT id, img, title,details,price, quantite FROM products;");
+	            resultat = statement.executeQuery("SELECT id, img, title,details,price, quantite,devise FROM products;");
 
 	            while (resultat.next()) {
 	            	int id = resultat.getInt("id");
@@ -113,6 +114,8 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	                String details = resultat.getString("details");
 	                float price = resultat.getFloat("price");
 	                int quantite = resultat.getInt("quantite");
+	                String devise = resultat.getString("devise");
+
 
 
 	                Products product = new Products();
@@ -122,6 +125,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	                product.setDetails(details);
 	                product.setPrice(price);
 	                product.setQuantite(quantite);
+	                product.setDevise(devise);
 
 	                products.add(product);
 	            }
@@ -140,7 +144,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		        try {
 		            connexion = daoFactory.getConnection();
 		            statement = connexion.createStatement();
-		            resultat = statement.executeQuery("SELECT id, img, title,details,price, quantite FROM products where id="+id+";");
+		            resultat = statement.executeQuery("SELECT id, img, title,details,price, quantite,devise FROM products where id="+id+";");
 		    	    
 		    	    while (resultat.next()) {
 		            int idd = resultat.getInt("id");
@@ -149,6 +153,8 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	                String details = resultat.getString("details");
 	                float price = resultat.getFloat("price");
 	                int quantite = resultat.getInt("quantite");
+		            String devise = resultat.getString("devise");
+
 
 
 	                product.setId(idd);
@@ -157,6 +163,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	                product.setDetails(details);
 	                product.setPrice(price);
 	                product.setQuantite(quantite);
+	                product.setDevise(devise);
 		    	    }} catch (SQLException e) {
 		            e.printStackTrace();
 		        }
@@ -174,7 +181,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		        try {
 		            connexion = daoFactory.getConnection();
 		            statement = connexion.createStatement();
-		            resultat = statement.executeQuery("SELECT id,item_pic,item_name,price, quantite FROM commande where email='"+mail+"';");
+		            resultat = statement.executeQuery("SELECT id,item_pic,item_name,price, quantite,devise FROM commande where email='"+mail+"';");
 
 		            while (resultat.next()) {
 		            	int id = resultat.getInt("id");
@@ -183,6 +190,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		                String item_name = resultat.getString("item_name");
 		                float price = resultat.getFloat("price");
 		                int quantite = resultat.getInt("quantite");
+		                String devise = resultat.getString("devise");
 
 
 		                Commande commande = new Commande();
@@ -192,6 +200,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		                commande.setItem_name(item_name);
 		                commande.setPrice(price);
 		                commande.setQuantite(quantite);
+		                commande.setDevise(devise);
 		             
 
 		                commandes.add(commande);
