@@ -19,6 +19,7 @@
             <li><a href="myaccount.jsp">my accout</a></li>
             <li><a href="register.jsp">register</a></li>
             <li><a href="details.jsp">prices</a></li>
+            <li><a href="admin.jsp">admin</a></li>
             <li><a href="contact.jsp">contact</a></li>
             </ul>
         </div>     

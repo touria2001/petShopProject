@@ -52,7 +52,7 @@ padding:30px 0 0 20px;
 }
 /*-----------------------------menu-------------------*/
 #menu{
-width:628px;
+width:700px;
 height:30px;
 float:right;
 padding:43px 0 0 10px;
@@ -60,7 +60,7 @@ padding:43px 0 0 10px;
 #menu ul{
 display:block;
 list-style:none;
-padding:9px 0 0 10px;
+padding:9px 0 0 100px;
 margin:0px;
 }
 #menu ul li{
@@ -72,7 +72,7 @@ height:20px;
 #menu ul li a{
 height:27px;
 display:block;
-padding:0px 10px 0 10px;
+padding:0px 2px 0 10px;
 margin:0 4px 0 4px;
 _margin:0 2px 0 2px;
 float:left;
@@ -101,7 +101,7 @@ color:#c4dfa6;
 }
 /*----------------crumb_nav------------------*/
 .crumb_nav{
-padding:5px 0 10px 0px;
+padding:5px 0px 10px 0px;
 }
 .crumb_nav a{
 color:#990000;
@@ -111,7 +111,7 @@ color:#990000;
 }
 .price .quantity{
 font-size:14px;
-padding:0 0 0 15px;
+padding:0 0 0 0px;
 margin:2px 0 5px 0;
 }
 span.colors{

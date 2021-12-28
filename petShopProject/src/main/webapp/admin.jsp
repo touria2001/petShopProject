@@ -4,14 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 <title>Pet Shop</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
-
 </head>
 <body>
 <div id="wrap">
 
-       <div class="header">
+         <div class="header">
        		<div class="logo"><a href="index.jsp"><img src="images/logo.gif" alt="" title="" border="0" /></a></div>            
-        <div id="menu">
+       <div id="menu">
            <ul>                                                                       
             <li><a href="index.jsp">home</a></li>
             <li class="selected"><a href="about.jsp">about us</a></li>
@@ -23,7 +22,7 @@
             <li><a href="admin.jsp">admin</a></li>
             <li><a href="contact.jsp">contact</a></li>
             </ul>
-        </div>    
+        </div>       
             
             
        </div> 
@@ -31,114 +30,75 @@
        
        <div class="center_content">
        	<div class="left_content">
-        	<div class="crumb_nav">
-            <a href="index.jsp">home</a> &gt;&gt; category name <span style="margin-left:40px; color:green;font-size:13px;"> <%
+            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>My account <span style="margin-left:40px; color:green;font-size:13px;"> <%
             String nameUser = (String) session.getAttribute("nameUser");
             if(String.valueOf(session.getAttribute("nameUser")).equals("null")){
             	out.print("you are not connected");
             } else{
-            out.print("connected: "+nameUser);} %></span>
-            </div>
-            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>Category books</div>
-           
-           <div class="new_products">
-           
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.jsp"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="images/new_icon.gif" alt="" title="" /></span>
-                        <a href="details.jsp"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                    
-                    
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.jsp"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>          
+            out.print("connected: "+nameUser);
+            } %></span></div>
+            
+        
+        	<div class="feat_prod_box_details">
+            <p class="details">
+             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+            </p>
+            
+              	<div class="contact_form">
+                <div class="form_subtitle">login into your account</div>
+                 <form name="admin" action="servletAdmin " method="post">          
+                    <div class="form_row">
+                    <label class="contact" ><strong>Username:</strong></label>
+                    <input type="text" class="contact_input" name="user" />
+                    </div>  
 
 
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.jsp"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.jsp"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                    
-                    
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        
-                        <a href="details.jsp"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div> 
-       
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><img src="images/new_icon.gif" alt="" title="" /></span>
-                        <a href="details.jsp"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
+                    <div class="form_row">
+                    <label class="contact" ><strong>Password:</strong></label>
+                    <input type="password" class="contact_input" name="pass" />
+                    </div>                     
+
+                    <div class="form_row">
+                        <div class="terms">
+                        <input type="checkbox" name="terms" />
+                        Remember me
+                        </div>
                     </div> 
 
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.jsp"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
                     
-                     <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.jsp"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                         <span class="new_icon"><img src="images/new_icon.gif" alt="" title="" /></span>
-                        <a href="details.jsp"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
-                    <div class="new_prod_box">
-                        <a href="details.jsp">product name</a>
-                        <div class="new_prod_bg">
-                        <a href="details.jsp"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                  
+                    <div class="form_row">
+                    <input type="submit" class="register" value="login" />
+                    </div>   
                     
-
-            <div class="pagination">
-            <span class="disabled"><<</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a>…<a href="#?page=199">10</a><a href="#?page=200">11</a><a href="#?page=2">>></a>
-            </div>  
+                  </form>     
+                    <p style="color:red" ><% 
+                    String resultat = String.valueOf(application.getAttribute("resultat"));
+                   if(String.valueOf(application.getAttribute("resultat")).equals("null")){
+                    	out.print("");
+                    }
+                    else{               
+                       out.print("Cette page est specifier a l'admin!");
+                    } %></p>
+                    <p> c'est page doit etre suppr apres. c'est juste pour M.Berrich por que vous pouvez ajouter des articles
+                    <br>
+                    les informations de l'admin sont les suivants:
+                     <br>
+                     le Login : tatatat 
+                      <br>
+                      Le mot de passe :toto
+                    </p>
+                    
+                </div>  
             
-            </div> 
-          
+            </div>	
             
-        <div class="clear"></div>
+        
+       <div class="clear"></div>
         </div><!--end of left content-->
         
         <div class="right_content">
-        	<div class="languages_box">
+        
+                	<div class="languages_box">
             <span class="red">Languages:</span>
             <a href="#"><img src="images/gb.gif" alt="" title="" border="0" /></a>
             <a href="#"><img src="images/fr.gif" alt="" title="" border="0" /></a>
@@ -160,9 +120,6 @@
                   <a href="cart.jsp" class="view_cart">view cart</a>
               
               </div>
-                       
-            	
-        
         
              <div class="title"><span class="title_icon"><img src="images/bullet3.gif" alt="" title="" /></span>About Our Shop</div> 
              <div class="about">
@@ -198,7 +155,7 @@
                         <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
                         <a href="details.jsp"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
                         </div>           
-                    </div>              
+                    </div>               
              
              </div>
              

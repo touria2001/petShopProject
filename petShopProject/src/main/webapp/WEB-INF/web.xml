@@ -19,4 +19,24 @@
     <servlet-name>mainServ</servlet-name>
     <url-pattern>/mainServ</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>servletAdmin</display-name>
+    <servlet-name>servletAdmin</servlet-name>
+    <servlet-class>petShopProject.login.servletAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletAdmin</servlet-name>
+    <url-pattern>/servletAdmin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>mainAdmin</display-name>
+    <servlet-name>mainAdmin</servlet-name>
+    <servlet-class>petShopProject.servlet.mainAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mainAdmin</servlet-name>
+    <url-pattern>/mainAdmin</url-pattern>
+  </servlet-mapping>
 </web-app>
