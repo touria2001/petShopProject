@@ -16,7 +16,7 @@
                 <span class="red">Currency: </span>
                 <a href="mainServ?devise=GBP" >GBP</a>
                 <a href="mainServ?devise=EUR" >EUR</a>
-                <a href="mainServ?devise=USD" ><strong>USD</strong></a>
+                <a href="mainServ?devise=$" ><strong>USD</strong></a>
                 </div>
                 
                 
