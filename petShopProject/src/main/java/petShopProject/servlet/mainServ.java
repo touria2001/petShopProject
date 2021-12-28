@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import petShopProject.beans.Commande;
+import petShopProject.beans.Contact;
 import petShopProject.beans.Utilisateur;
 import petShopProject.dao.DaoFactory;
 import petShopProject.dao.UtilisateurDao;
@@ -99,6 +101,15 @@ public class mainServ extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//--------------------------------------------------------------------------------------------
+		//pour forwroder un contact to jsp 
+		
+	     Contact contact = new Contact();
+	     contact = utilisateurDao.afficherContact(request.getParameter("user"),request.getParameter("pass"));
+	     request.setAttribute("contact",contact);
+	     
+		//this.getServletContext().getRequestDispatcher("/contact.jsp").forward(request, response);
+		
 		request.setAttribute("products",utilisateurDao.listerProducts());
 		if(request.getSession().getAttribute("nameUser") != null) {
 		    List<Commande> commandes = new ArrayList<Commande>();
@@ -162,6 +173,12 @@ public class mainServ extends HttpServlet {
 	        
 	        //------------------------------------------------------------------------------------------
 	        this.getServletContext().getRequestDispatcher("/ourObjects.jsp").forward(request, response);
+	        
+	        
+
+		
+		
 	}
+	
 
 }

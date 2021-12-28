@@ -10,6 +10,7 @@ import java.util.List;
 
 import petShopProject.dao.UtilisateurDao;
 import petShopProject.beans.Commande;
+import petShopProject.beans.Contact;
 import petShopProject.beans.Products;
 import petShopProject.beans.Utilisateur;
 
@@ -29,7 +30,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	        try {
 	            connexion = daoFactory.getConnection();
-	            preparedStatement = connexion.prepareStatement("INSERT INTO users(username, password, email, phone, company, address) VALUES(?, ?,?,?,?,?);");
+	            preparedStatement = connexion.prepareStatement("INSERT INTO users(username, password, email, phone, company, address,date) VALUES(?, ?,?,?,?,?,NOW());");
 	            preparedStatement.setString(1, utilisateur.getUsername());
 	            preparedStatement.setString(2, utilisateur.getPassword());
 	            preparedStatement.setString(3, utilisateur.getEmail());
@@ -528,5 +529,44 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
  	  }
 	
+	    
+//pour afficher des informations en contact.jsp
+	    
+	    @Override
+	     public Contact afficherContact(String usr, String password){
+	    	
+	       Contact contact = new Contact();
+	        Connection connexion = null;
+	        Statement statement = null;
+	        ResultSet resultat = null;
+
+	        try {
+	        	
+	            connexion = daoFactory.getConnection();
+	            statement = connexion.createStatement();
+	            resultat = statement.executeQuery("SELECT username, email,phone ,company   FROM users;");
+
+	            while (resultat.next()) {
+	            	if(resultat.getString("username").equals(usr) && resultat.getString("password").equals(password) )
+	            	{
+	                	
+	                String user = resultat.getString("username");
+	                String email = resultat.getString("email");
+	                long phone = Long.parseLong(resultat.getString("phone"));
+	                String company = resultat.getString("company");
+
+	              
+	                contact.setName(user);
+	                contact.setEmail(email);
+	                contact.setPhone(phone);
+	                contact.setCompany(company);
+	            	  }
+	            	else {  contact=null; }
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return contact;
+	    }
 
 }
